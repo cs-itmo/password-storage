@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Organizations</h2>
+<ul class="list-group mb-3">
+    {% for org in organizations %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ org.name }}
+        <a href="{{ url_for('organization_page', org_id=org.id) }}" class="btn btn-primary btn-sm">Enter</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('create_organization') }}" class="btn btn-success">Create Organization</a>
+<a href="{{ url_for('join_organization') }}" class="btn btn-secondary">Join Organization</a>
+<a href="{{ url_for('logout') }}" class="btn btn-danger float-end">Logout</a>
+{% endblock %}

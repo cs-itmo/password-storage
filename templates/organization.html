@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Organization - Passwords</h2>
+<div>
+    <p>Your join code is: <strong>{{ join_code }}</strong></p>
+</div>
+<form method="POST">
+    <input class="form-control mb-2" name="service" placeholder="Service" required>
+    <input class="form-control mb-2" name="secret" placeholder="Secret" required>
+    <button class="btn btn-warning">Add Password</button>
+</form>
+
+<hr>
+<ul class="list-group">
+    {% for p in passwords %}
+    <li class="list-group-item">
+        <strong>{{ p.service }}</strong> - {{ p.secret }} (UserID: {{ p.user_id }})
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}
